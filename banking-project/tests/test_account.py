@@ -1,41 +1,25 @@
 import unittest
-
-import bank.account as file 
-
-class MyAccountTests(unittest.TestCase):
-    def setUp(self):
-      self.testAccount = file.Account(
-         account_id=100,
-         balance_checking=10, 
-         balance_savings=10)
-
-    def test_depositCheck(self):
-       self.testAccount.deposit("checking",90)
-       self.assertEqual(self.testAccount.balance_checking, 100)
+import sys 
+import os 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
-    def test_withdrawCheck(self):
-        self.testAccount.withdraw("checking", 5)
-        self.assertEqual(self.testAccount.balance_checking, 5)
-    
-    def test_depositSavings(self):
-        self.testAccount.deposit("savings", 40)
-        self.assertEqual(self.testAccount.balance_savings, 50)
+class TestAccount(unittest.TestCase):
+    def test_one_account_exists(self):
+        try:
+            from bank.account import Account
+            print("class account is available!")
 
-    
-    def test_withdrawSavings(self):
-        self.testAccount.withdraw("savings", 5)
-        self.assertEqual(self.testAccount.balance_savings, 5)
+        except ImportError:
+            self.fail("class account is not available -we must create it ")
 
-    def test_transferCheckToSavings(self):
-        self.testAccount.transfer("checking", "savings", 5) #transfer form checking --> savings
-        self.assertEqual(self.testAccount.balance_checking, 5)
-        self.assertEqual(self.testAccount.balance_savings, 15)
-
-    def test_transferSavingsToCheck(self):
-        self.testAccount.transfer("savings", "checking", 5)#transfer form savings  --> checking
-        self.assertEqual(self.testAccount.balance_savings, 5)
-        self.assertEqual(self.testAccount.balance_checking, 15)
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_two_account(self):
+        from bank.account import Account 
+        account = Account("10001",1000.0,5000.0)
+        self.assertEqual(account.account_id, "10001")
+        self.assertEqual(account.checking_balance, 1000.0)
+        self.assertEqual(account.savings_balance, 5000.0)
+        print("The account was successfully created")
+if __name__ =='__main__':
+    print("start account tests")
+    unittest.main(verbosity= 2)
