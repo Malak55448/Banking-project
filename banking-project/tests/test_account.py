@@ -55,6 +55,36 @@ class TestAccount(unittest.TestCase):
             account.deposit_checking(0)
         print("preventing in correct deposits") 
 
+    def test_six_WithdrawCheck_right(self):# Successful withdrawal from the checking account
+
+        from bank.account import Account
+        account = Account("10001", 1000.0, 5000.0)
+
+        BalanceNew = account.withdraw_checking(200.0)
+        self.assertEqual(BalanceNew, 800.0)
+        self.assertEqual(account.checking_balance, 800.0)
+        print("Withdrawal from the checking account")
+
+    def test_seven_withdrawsav_right(self):  #Successful withdrawal from the savings account
+        from bank.account import Account
+        account = Account("10001", 1000.0, 5000.0)
+
+        BalanceNew = account.withdraw_savings(1000.0)
+        self.assertEqual(BalanceNew, 4000.0)
+        self.assertEqual(account.savings_balance, 4000.0)
+        print("Withdrawal from the savings account")
+
+    def test_eight_OverdraftFees(self): 
+        from bank.account import Account
+        account = Account("10001", 1000.0, 5000.0)
+
+        BalanceNew = account.withdraw_checking(1050.0)
+        ExpectBalance = 1000.0 - 1050.0 - Account.OVERDRAFT_FEES
+        self.assertEqual(BalanceNew, ExpectBalance)
+        self.assertEqual(account.overdraft_count, 1)#We make sure that the overdraft counter increased by one after this withdrawalظ 
+
+        print("Overdraft fees have been applied!")
+
 
 if __name__ =='__main__':
     print("start account tests")
