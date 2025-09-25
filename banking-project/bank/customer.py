@@ -8,3 +8,7 @@ class Customer:
         self.savings_balance = float(savings_balance)
         self.overdraft_count = 0
         self.is_active = True
+
+
+    def VerifyPassword(self, password):
+        return self.password == password

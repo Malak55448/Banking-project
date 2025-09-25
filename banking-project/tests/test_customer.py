@@ -22,6 +22,13 @@ class TestMyCustomer(unittest.TestCase):
         print(" Customer created successfully!")
 
 
+      #right password
+    def test_two_VerifyPassword_right(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Malak", "Ali", "malak123")
+        self.assertTrue(customer.VerifyPassword("malak123"))
+        print(" Password works!")
 
 
 
