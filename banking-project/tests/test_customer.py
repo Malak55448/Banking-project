@@ -41,6 +41,16 @@ class TestMyCustomer(unittest.TestCase):
         self.assertFalse(customer.VerifyPassword("123"))
         print(" Wrong password rejected!")
 
+   #  get full name
+    def test_four_getFullName(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Malak", "Ali", "malak123")
+        
+        self.assertEqual(customer.get_fullName1(), "Malak Ali")
+        print(" Full name works! got it!!!")
+    
+
 
 
 
