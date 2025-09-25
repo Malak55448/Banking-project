@@ -13,3 +13,6 @@ class Customer:
     def VerifyPassword(self, password):
         return self.password == password
     
+
+    def get_fullName1(self):
+        return f"{self.first_name} {self.last_name}"
