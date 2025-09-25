@@ -31,7 +31,7 @@ class TestMyCustomer(unittest.TestCase):
         print(" Password works!")
 
       #wrong password
-    def test_three_VerifyPassword_right(self):
+    def test_three_VerifyPassword_wrong (self):
         from bank.customer import Customer
         
         customer = Customer("10001", "Malak", "Ali", "malak123")
