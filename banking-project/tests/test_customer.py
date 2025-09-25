@@ -39,7 +39,7 @@ class TestMyCustomer(unittest.TestCase):
         self.assertFalse(customer.VerifyPassword("124mm"))
         self.assertFalse(customer.VerifyPassword(""))
         self.assertFalse(customer.VerifyPassword("123"))
-        print("✅ Wrong password rejected!")
+        print(" Wrong password rejected!")
 
 
 
