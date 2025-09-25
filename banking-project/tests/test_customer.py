@@ -30,7 +30,16 @@ class TestMyCustomer(unittest.TestCase):
         self.assertTrue(customer.VerifyPassword("malak123"))
         print(" Password works!")
 
-
+      #wrong password
+    def test_three_VerifyPassword_right(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Malak", "Ali", "malak123")
+        
+        self.assertFalse(customer.VerifyPassword("124mm"))
+        self.assertFalse(customer.VerifyPassword(""))
+        self.assertFalse(customer.VerifyPassword("123"))
+        print("✅ Wrong password rejected!")
 
 
 

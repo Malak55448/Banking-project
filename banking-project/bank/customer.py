@@ -10,5 +10,4 @@ class Customer:
         self.is_active = True
 
 
-    def VerifyPassword(self, password):
-        return self.password == password
+   
