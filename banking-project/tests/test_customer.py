@@ -49,8 +49,34 @@ class TestMyCustomer(unittest.TestCase):
         
         self.assertEqual(customer.get_fullName1(), "Malak Ali")
         print(" Full name works! got it!!!")
+
+
+    def test_five_UpdateBalances(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Malak", "Ali", "malak123", 1000.0, 5000.0)
+        
+        customer.update_Malak_Balances(1500.0, 4500.0, overdraft_count=1, is_active=False)
+        
+        self.assertEqual(customer.checking_balance, 1500.0)
+        self.assertEqual(customer.savings_balance, 4500.0)
+        self.assertEqual(customer.overdraft_count, 1)
+        self.assertFalse(customer.is_active)
+        print("Balance update works! goood :)")
     
 
+    def test_six_UpdateBalances_Partial(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Malak", "Ali", "malak123", 1000.0, 5000.0)
+        
+        customer.update_Malak_Balances(2000.0, 3000.0)
+        
+        self.assertEqual(customer.checking_balance, 2000.0)
+        self.assertEqual(customer.savings_balance, 3000.0)
+        self.assertEqual(customer.overdraft_count, 0)   
+        self.assertTrue(customer.is_active)  
+        print("  UpdateBalances_Partial works!")
 
 
 
@@ -60,4 +86,4 @@ class TestMyCustomer(unittest.TestCase):
         
 if __name__ == '__main__':
     print("customer tests")
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=2) # verbosity=2 : prints the names of the tests one by one and shows whether each test passed (PASS) or failed (FAIL)
