@@ -16,3 +16,10 @@ class Customer:
 
     def get_fullName1(self):
         return f"{self.first_name} {self.last_name}"
+    
+
+    def update_Malak_Balances(self, checking_balance, savings_balance, overdraft_count=None, is_active=None):
+      self.checking_balance = checking_balance
+      self.savings_balance = savings_balance
+      self.overdraft_count = overdraft_count if overdraft_count is not None else self.overdraft_count
+      self.is_active = is_active if is_active is not None else self.is_active
