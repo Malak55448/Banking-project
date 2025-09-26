@@ -18,6 +18,10 @@ class Customer:
         return f"{self.first_name} {self.last_name}"
     
 
+     # I combined the idea into a single function.
+     # Full update: all values change => like test_five_UpdateBalances. 
+     # Partial update: only the balance => like test_six_UpdateBalances_Partial.
+
     def update_Malak_Balances(self, checking_balance, savings_balance, overdraft_count=None, is_active=None):
       self.checking_balance = checking_balance
       self.savings_balance = savings_balance
