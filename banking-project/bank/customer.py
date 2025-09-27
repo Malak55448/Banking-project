@@ -29,9 +29,8 @@ class Customer:
       self.is_active = is_active if is_active is not None else self.is_active
 
 
-
+    #  Convert to a dictionary for saving in CSV
     def to_dict(self):
-        """Convert to a dictionary for saving in CSV"""
         return {
             'account_id': self.account_id,
             'first_name': self.first_name,
