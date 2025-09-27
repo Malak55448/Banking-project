@@ -77,11 +77,63 @@ class TestMyCustomer(unittest.TestCase):
         self.assertEqual(customer.overdraft_count, 0)   
         self.assertTrue(customer.is_active)  
         print("  UpdateBalances_Partial works!")
+    
+
+    def test_seven_Customer_object_ToDictionary(self):
+        from bank.customer import Customer
+
+        customer = Customer("10001", "Malak", "Ali", "malak123", 1000.0, 5000.0)
+        customer.overdraft_count = 2
+        customer.is_active = False
+        
+        expected_dict = {
+        'account_id': "10001",
+        'first_name': "Malak",
+        'last_name': "Ali",
+        'password': "malak123",
+        'balance_checking': 1000.0,
+        'balance_savings': 5000.0,
+        'overdraft_count': 2,
+        'is_active': False
+        }
+
+        self.assertDictEqual(customer.to_dict(), expected_dict)
 
 
 
-
-
+    def test_eight_customer_Zero_balances(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10002", "Maha", "Naif", "123mm")
+        
+        self.assertEqual(customer.checking_balance, 0.0)
+        self.assertEqual(customer.savings_balance, 0.0)
+        self.assertTrue(customer.is_active)
+        self.assertEqual(customer.overdraft_count, 0)
+        print(" test_eight_customer_Zero_balances works!")
+    
+    def test_Nine_str_representation(self):
+        from bank.customer import Customer
+        
+        customer = Customer("10001", "Amal", "Ali", "amal234")
+        
+        Information = "Customer: Amal Ali (ID: 10001)"
+        self.assertEqual(str(customer), Information)
+        print(" String representation works!")
+    
+    def test_Ten_cases(self):
+        from bank.customer import Customer
+        
+                                 # Empty Names
+        customer = Customer("10003", "", "", "pass123")
+        self.assertEqual(customer.get_fullName1(), " ")
+        
+                      # Empty password
+        customer2 = Customer("10004", "Test", "User", "")
+        self.assertTrue(customer2.VerifyPassword(""))
+        self.assertFalse(customer2.VerifyPassword("anything"))
+        
+        print(" Edge cases handled!")
 
         
 if __name__ == '__main__':
