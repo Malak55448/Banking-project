@@ -30,3 +30,18 @@ class Customer:
 
 
 
+    def to_dict(self):
+        """Convert to a dictionary for saving in CSV"""
+        return {
+            'account_id': self.account_id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'password': self.password,
+            'balance_checking': self.checking_balance,
+            'balance_savings': self.savings_balance,
+            'overdraft_count': self.overdraft_count,
+            'is_active': self.is_active
+        }
+    
+    def __str__(self):
+        return f"Customer: {self.get_fullName1()} (ID: {self.account_id})"
