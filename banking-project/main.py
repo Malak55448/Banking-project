@@ -21,7 +21,7 @@ def main_menu():
 
 def customer_menu():
     print("\n" + "-"*50)
-    print("💰 Banking Operations Menu")
+    print(" Banking Operations Menu")
     print("-"*50)
     print("1.  Check Account Balance")
     print("2.  Deposit Money")
